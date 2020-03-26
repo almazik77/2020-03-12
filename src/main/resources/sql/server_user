@@ -1,0 +1,14 @@
+create table server_user
+(
+    user_name      varchar,
+    id             bigserial not null
+        constraint server_user_pk
+            primary key,
+    email          varchar,
+    password       varchar,
+    confirm_string varchar
+);
+
+alter table server_user
+    owner to postgres;
+

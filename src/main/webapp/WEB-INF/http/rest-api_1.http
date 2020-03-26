@@ -1,0 +1,14 @@
+ GET http://localhost:8080/confirm/asd
+
+Accept: */*
+Cache-Control: no-cache
+
+<> 2020-03-11T092223.404.html
+<> 2020-03-11T091839.404.html
+<> 2020-03-11T091442.404.html
+<> 2020-03-11T091422.500.html
+<> 2020-03-11T091410.404.html
+<> 2020-03-11T091359.404.html
+
+###
+

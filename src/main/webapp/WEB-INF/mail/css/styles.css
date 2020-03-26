@@ -1,0 +1,12 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 48px;
+    margin: 0px;
+    padding: 0px;
+}
+
+table {
+    border-collapse: collapse;
+    background-color: black;
+    color: white;
+}
