@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -26,10 +27,15 @@ public class UploadingFileAspect {
         System.out.println(Arrays.toString(joinPoint.getArgs()));
     }
 
-    @AfterReturning(pointcut = "execution(* ru.itis.services.FileServiceImpl.save(..))", returning = "returnValue")
-    public void afterReturning(JoinPoint joinPoint, Object returnValue) {
+    @AfterReturning(pointcut = "execution(* ru.itis.services.FileService.save(..))", returning = "returnValue")
+    public void afterReturning(Object returnValue) {
         FileInfoDto fileInfoDto = (FileInfoDto) returnValue;
         log.info("notifying " + fileInfoDto);
         mailService.uploadNotify(fileInfoDto);
+    }
+
+    @AfterThrowing(pointcut = "execution(* ru.itis.services.FileService.save(..))", throwing = "e")
+    public void doRecoveryActions(Exception e) {
+        log.info(e.toString());
     }
 }

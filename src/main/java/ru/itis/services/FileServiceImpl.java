@@ -36,10 +36,10 @@ public class FileServiceImpl implements FileService {
         String storageFileName = createStorageName(file.getOriginalFilename());
         FileInfo fileInfo = FileInfo.builder()
                 .originalFileName(file.getOriginalFilename())
-                .storageFileName(storageFileName.toString())
+                .storageFileName(storageFileName)
                 .size(file.getSize())
                 .type(file.getContentType())
-                .url(storagePath + "/" + storageFileName)
+                .url(storagePath + "\\" + storageFileName)
                 .build();
 
         fileInfoRepository.save(fileInfo);

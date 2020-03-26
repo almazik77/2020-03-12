@@ -30,7 +30,7 @@ public class UserRepositoryJdbcTemplateImpl implements UserRepository {
     //language=SQL
     private final String SQL_FIND_ALL = "SELECT * FROM server_user;";
     //language=SQL
-    private final String SQL_DELETE_CONFIRM_STRING = "UPDATE server_user SET confirm_string = '' where confirm_string = ?;";
+    private final String SQL_DELETE_CONFIRM_STRING = "UPDATE server_user SET confirm_string = '', state = 'CONFIRMED' where confirm_string = ?;";
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
